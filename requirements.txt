@@ -1,0 +1,56 @@
+# Dependencias principales
+ultralytics==8.1.0
+opencv-python==4.9.0.80
+opencv-contrib-python==4.9.0.80
+streamlit==1.30.0
+pandas==2.1.4
+numpy==1.26.3
+matplotlib==3.8.2
+seaborn==0.13.1
+plotly==5.18.0
+openpyxl==3.1.2
+scipy==1.11.4
+Pillow==10.2.0
+
+# Tracking y utilidades
+scikit-learn==1.3.2
+filterpy==1.4.5
+
+# Logging y configuración
+pyyaml==6.0.1
+python-dotenv==1.0.0
+
+# Utilidades adicionales
+tqdm==4.66.1
+colorama==0.4.6
+
+# Dependencias originales
+opencv-python>=4.8.0
+ultralytics>=8.0.0
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Nuevas dependencias para V2
+streamlit>=1.28.0
+plotly>=5.17.0
+openpyxl>=3.1.0
+Pillow>=10.0.0
+
+# Dependencias originales
+opencv-python>=4.8.0
+ultralytics>=8.0.0
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Dependencias V2
+streamlit>=1.28.0
+plotly>=5.17.0
+openpyxl>=3.1.0
+Pillow>=10.0.0
+streamlit-drawable-canvas>=0.9.3
+
+# Machine Learning para detección automática
+scikit-learn>=1.3.0
+
+# Módulo de dibujo interactivo
+streamlit-drawable-canvas>=0.9.3
