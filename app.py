@@ -148,6 +148,7 @@ def process_video(video_path, detector, tracker, counter,
         width  = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        frame_skip = 2  # ← aquí
 
         output_video_path = None
         if save_video:
@@ -176,6 +177,8 @@ def process_video(video_path, detector, tracker, counter,
                 break
 
             frame_count += 1
+            if frame_count % frame_skip != 0:
+                continue
             detections   = detector.detect(frame)
             tracks       = tracker.update(detections, frame_count)
             valid_tracks = tracker.get_valid_tracks()

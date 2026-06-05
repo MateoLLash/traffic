@@ -418,7 +418,8 @@ def create_detector(confidence: float = 0.5,
     return ObjectDetector(
         model_name=model_name,
         confidence_threshold=confidence,
-        target_classes=classes
+        target_classes=classes,
+        device='cuda'
     )
 
 
