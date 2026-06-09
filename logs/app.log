@@ -1097,3 +1097,241 @@ Check the documentation of torch.load to learn more about types accepted by defa
 2026-06-05 15:06:29 - app - INFO - Detector inicializado correctamente
 2026-06-05 15:06:29 - app - INFO - Detector inicializado correctamente
 2026-06-05 15:06:29 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:32 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:40:46 - app - ERROR - Error en procesamiento: OpenCV(4.10.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 14:52:19 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:19:36 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:34:06 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:34:06 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:34:06 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:34:06 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:34:06 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:34:06 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:34:06 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:34:06 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:47:00 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:47:00 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:47:00 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:47:00 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:47:00 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:47:00 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:47:00 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:47:00 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 15:48:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:14:56 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:14:56 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:14:56 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:14:56 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:14:56 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:14:56 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:14:56 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:14:56 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:22:51 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:22:51 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:22:51 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:22:51 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:22:51 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:22:51 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:22:51 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:22:51 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:22:51 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:41:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:41:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:41:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:41:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:41:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:41:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:41:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:41:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:41:01 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 16:45:37 - app - INFO - Detector inicializado correctamente
+2026-06-09 17:11:58 - app - INFO - Detector inicializado correctamente
+2026-06-09 17:11:58 - app - INFO - Detector inicializado correctamente
+2026-06-09 17:11:58 - app - INFO - Detector inicializado correctamente
+2026-06-09 17:11:58 - app - INFO - Detector inicializado correctamente
+2026-06-09 17:11:58 - app - INFO - Detector inicializado correctamente
+2026-06-09 17:11:58 - app - INFO - Detector inicializado correctamente
+2026-06-09 17:11:58 - app - INFO - Detector inicializado correctamente
+2026-06-09 17:11:58 - app - INFO - Detector inicializado correctamente
+2026-06-09 17:11:58 - app - INFO - Detector inicializado correctamente

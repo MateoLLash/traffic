@@ -243,6 +243,12 @@ if st.session_state.videos:
                         col1, col2, col3, col4 = st.columns([2, 2, 1, 1])
                         with col1:
                             st.write(f"**{line['name']}**")
+                            # Mostrar coordenadas de la línea
+                            try:
+                                coords_txt = f"Coords: {line.get('coords')}"
+                            except Exception:
+                                coords_txt = "Coords: N/A"
+                            st.write(coords_txt)
                         with col2:
                             st.write(f"Dirección: {line['direction']}")
                         with col3:
@@ -269,6 +275,12 @@ if st.session_state.videos:
                         col1, col2, col3 = st.columns([2, 2, 1])
                         with col1:
                             st.write(f"**{zone['name']}**")
+                            # Mostrar coordenadas del polígono
+                            try:
+                                coords_txt = f"Coords: {zone.get('coords')}"
+                            except Exception:
+                                coords_txt = "Coords: N/A"
+                            st.write(coords_txt)
                         with col2:
                             st.write(f"Tipo: {zone['type']}")
                         with col3:

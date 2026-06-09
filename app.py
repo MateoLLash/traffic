@@ -33,6 +33,7 @@ from components import video_player, sidebar_brand, empty_state
 from chunker import (VideoChunker, consolidate_stats, consolidate_crossings,
                      get_video_info, needs_chunking, ffmpeg_available,
                      format_duration)
+from drawing_tool import DrawingTool
 
 # Configurar página — siempre primero
 st.set_page_config(
@@ -66,6 +67,7 @@ if 'initialized' not in st.session_state:
     st.session_state.time_series = None
     st.session_state.output_dirs = None
     st.session_state.frame_for_lines = None
+    st.session_state.canvas_scale_factor = 1.0  # Factor para escalar coordenadas del canvas
     st.session_state.processed_video_path = None
 
 
@@ -107,7 +109,31 @@ def frame_to_pil(frame_rgb):
     return PILImage.fromarray(arr)
 
 
+def resize_frame_for_canvas(frame, max_width=1000):
+    """
+    Redimensiona el frame para el canvas manteniendo aspecto ratio.
+    
+    Args:
+        frame: Frame RGB
+        max_width: Ancho máximo en píxeles
+        
+    Returns:
+        (frame_resized, scale_factor) donde scale_factor es el ratio original/resized
+    """
+    h, w = frame.shape[:2]
+    if w <= max_width:
+        return frame, 1.0
+    
+    scale = w / max_width
+    new_w = max_width
+    new_h = int(h / scale)
+    
+    resized = cv2.resize(frame, (new_w, new_h), interpolation=cv2.INTER_LINEAR)
+    return resized, scale
+
+
 def draw_line_on_frame(frame_rgb, lines):
+
     """
     Dibuja líneas sobre frame RGB. Trabaja en BGR internamente y devuelve RGB uint8.
     """
@@ -133,6 +159,16 @@ def _step_actual():
     if st.session_state.video_uploaded:
         return 1
     return 0
+
+
+def opencv_gui_available():
+    """Devuelve True si OpenCV puede crear ventanas GUI en este entorno local."""
+    try:
+        cv2.namedWindow("_test_opencv_gui_", cv2.WINDOW_NORMAL)
+        cv2.destroyWindow("_test_opencv_gui_")
+        return True
+    except Exception:
+        return False
 
 
 def process_video(video_path, detector, tracker, counter,
@@ -232,7 +268,6 @@ def process_video(video_path, detector, tracker, counter,
                 if save_video:
                     out.write(frame_vis)
 
-                # Ventana OpenCV fluida — se actualiza cada frame
                 if show_visualizations and use_opencv_window:
                     cv2.imshow("Traffic Analysis — procesando (Q para cerrar)", frame_vis)
                     if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -264,10 +299,20 @@ def process_video(video_path, detector, tracker, counter,
                         )
 
                 if frame_count % 30 == 0:
-                    frame_rgb = cv2.cvtColor(frame_vis, cv2.COLOR_BGR2RGB)
-                    video_placeholder.image(frame_rgb,
-                                           caption=f"Frame {frame_count}",
-                                           use_column_width=True)
+                    scale = st.session_state.get('canvas_scale_factor', 1.0)
+                    if scale and scale > 1.0 and st.session_state.get('frame_for_lines') is not None:
+                        disp_w = st.session_state['frame_for_lines'].shape[1]
+                        disp_h = st.session_state['frame_for_lines'].shape[0]
+                        frame_disp = cv2.resize(frame_vis, (disp_w, disp_h), interpolation=cv2.INTER_AREA)
+                        frame_rgb = cv2.cvtColor(frame_disp, cv2.COLOR_BGR2RGB)
+                        video_placeholder.image(frame_rgb,
+                                               caption=f"Frame {frame_count}",
+                                               width=disp_w)
+                    else:
+                        frame_rgb = cv2.cvtColor(frame_vis, cv2.COLOR_BGR2RGB)
+                        video_placeholder.image(frame_rgb,
+                                               caption=f"Frame {frame_count}",
+                                               use_column_width=True)
 
                 if frame_count % 60 == 0:
                     with stats_placeholder.container():
@@ -280,9 +325,6 @@ def process_video(video_path, detector, tracker, counter,
         cap.release()
         if save_video:
             out.release()
-        # Cerrar ventana OpenCV al terminar
-        if use_opencv_window:
-            cv2.destroyAllWindows()
 
         statistics  = counter.get_statistics()
         time_series = counter.get_time_series_data(interval_seconds=60)
@@ -337,10 +379,17 @@ def main():
                 if result:
                     st.session_state.video_path, st.session_state.video_properties = result
                     st.session_state.video_uploaded = True
-                    st.session_state.frame_for_lines = get_first_frame(
-                        st.session_state.video_path)
-                    st.session_state.output_dirs = create_output_dirs()
-                    st.success("Video cargado.")
+                    raw_frame = get_first_frame(st.session_state.video_path)
+                    if raw_frame is not None:
+                        st.session_state.frame_for_lines = raw_frame
+                        st.session_state.frame_for_lines_raw = raw_frame
+                        st.session_state.canvas_scale_factor = 1.0
+                    else:
+                        st.session_state.frame_for_lines = None
+                        st.session_state.frame_for_lines_raw = None
+                        st.session_state.canvas_scale_factor = 1.0
+                        st.session_state.output_dirs = create_output_dirs()
+                        st.success("Video cargado.")
 
         if st.session_state.video_uploaded:
             video_info_card(st.session_state.video_properties)
@@ -394,14 +443,16 @@ def main():
                         confidence=confidence,
                         model_size=model_size,
                         classes=selected_classes if selected_classes else None,
-                        use_peruvian_model=use_peruvian  # ← agregar esta línea
+                        use_peruvian_model=use_peruvian
                     )
                     st.session_state.tracker = ObjectTracker(
                         max_age=10, min_hits=3, iou_threshold=0.3
                     )
-                    fps_vid = (st.session_state.video_properties['fps']
-                               if st.session_state.video_properties else 30)
-                    st.session_state.counter = TrafficCounter(fps=fps_vid)
+                    # NO reinicializar counter si ya existe, solo crear si es None
+                    if st.session_state.counter is None:
+                        fps_vid = (st.session_state.video_properties['fps']
+                                   if st.session_state.video_properties else 30)
+                        st.session_state.counter = TrafficCounter(fps=fps_vid)
                     st.success("Detector y tracker listos.")
                     logger.info("Detector inicializado correctamente")
                 except Exception as e:
@@ -435,7 +486,7 @@ def main():
                 description="Sube un video desde el sidebar para definir las líneas de conteo."
             )
         else:
-            col1, col2 = st.columns([3, 2], gap="large")
+            col1, col2 = st.columns([8, 1.0], gap="large")
 
             # ── Columna izquierda: visor del frame ────────────
             with col1:
@@ -443,6 +494,10 @@ def main():
                 props = st.session_state.video_properties or {}
                 w, h  = props.get('width', '—'), props.get('height', '—')
                 n_lines = len(st.session_state.counting_lines)
+                display_w, display_h = (
+                    st.session_state.frame_for_lines.shape[1],
+                    st.session_state.frame_for_lines.shape[0]
+                ) if st.session_state.frame_for_lines is not None else (w, h)
                 st.markdown(f"""
                 <div style="
                     display:flex; align-items:center; justify-content:space-between;
@@ -457,10 +512,15 @@ def main():
                             FRAME DE REFERENCIA
                         </span>
                     </div>
-                    <div style="display:flex;gap:10px;">
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;">
                         <span style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;
                                      color:#475569;background:#111318;border:1px solid #1E2433;
                                      border-radius:5px;padding:2px 8px;">{w}×{h}</span>
+                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;
+                                     color:#94A3B8;background:#111318;border:1px solid #1E2433;
+                                     border-radius:5px;padding:2px 8px;">
+                            Mostrar {display_w}×{display_h} en el canvas
+                        </span>
                         <span style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;
                                      color:#F5A623;background:rgba(245,166,35,0.1);border:1px solid #7A5210;
                                      border-radius:5px;padding:2px 8px;">{n_lines} línea{'s' if n_lines!=1 else ''}</span>
@@ -468,34 +528,95 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
 
-                # Frame
+                # Canvas de dibujo manual
+                if 'manual_canvas_key' not in st.session_state:
+                    st.session_state.manual_canvas_key = "manual_lines_canvas"
+
                 if st.session_state.frame_for_lines is not None:
-                    frame_display = st.session_state.frame_for_lines.copy()
-                    if st.session_state.counting_lines:
-                        frame_display = draw_line_on_frame(
-                            frame_display, st.session_state.counting_lines)
                     st.markdown("""
-                    <div style="border:1px solid #1E2433;border-top:none;
-                                border-radius:0 0 10px 10px;overflow:hidden;line-height:0;">
+                    <div style="border:1px solid #1E2433;border-radius:10px;overflow:hidden;">
                     """, unsafe_allow_html=True)
-                    st.image(frame_to_pil(frame_display), use_column_width=True)
+
+                    drawing_tool = DrawingTool(
+                        st.session_state.frame_for_lines,
+                        canvas_key=st.session_state.manual_canvas_key
+                    )
+                    drawn_lines = drawing_tool.draw_lines([])
+
+                    pending_lines = []
+                    scale = st.session_state.canvas_scale_factor or 1.0
+                    if drawn_lines is not None:
+                        for drawn in drawn_lines:
+                            if 'coords' in drawn and len(drawn['coords']) == 2:
+                                coords = drawn['coords']
+                                hex_color = drawn.get('color', '#F5A623')
+                                if isinstance(hex_color, str) and hex_color.startswith('#'):
+                                    rgb = tuple(int(hex_color.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
+                                    bgr = (rgb[2], rgb[1], rgb[0])
+                                else:
+                                    bgr = drawn.get('color', (0, 255, 0))
+
+                                orig_w = st.session_state.frame_for_lines_raw.shape[1]
+                                canvas_scale = orig_w / 800 if orig_w > 800 else 1.0
+                                start = (int(coords[0][0] * canvas_scale), int(coords[0][1] * canvas_scale))
+                                end = (int(coords[1][0] * canvas_scale), int(coords[1][1] * canvas_scale))
+
+                                pending_lines.append({
+                                    'name': drawn.get('name', f"Línea {len(pending_lines)+1}"),
+                                    'start': start,
+                                    'end': end,
+                                    'color': bgr,
+                                    'direction': drawn.get('direction', '')
+                                })
+
                     st.markdown("</div>", unsafe_allow_html=True)
 
-                # Tip de coordenadas
+                    if pending_lines:
+                        st.markdown("""
+                        <div style="margin-top:12px;background:#0A0C10;border:1px solid #1E2433;
+                                     border-radius:10px;padding:12px;">
+                            <strong style="color:#F5A623;">Líneas dibujadas pendientes</strong>
+                            <div style="color:#94A3B8;margin-top:6px;">Haz clic en el botón para agregar estas líneas a la lista.</div>
+                        </div>
+                        """, unsafe_allow_html=True)
+
+                        if st.button("Agregar líneas dibujadas", key="add_drawn_lines"):
+                            existing_coords = {
+                                (tuple(line['start']), tuple(line['end']))
+                                for line in st.session_state.counting_lines
+                            }
+                            added_count = 0
+                            for pending in pending_lines:
+                                coord_pair = (tuple(pending['start']), tuple(pending['end']))
+                                if coord_pair not in existing_coords:
+                                    st.session_state.counting_lines.append(pending)
+                                    existing_coords.add(coord_pair)
+                                    added_count += 1
+                            if added_count:
+                                st.success(f"Se agregaron {added_count} línea(s).")
+                            else:
+                                st.info("No hay nuevas líneas para agregar.")
+                            st.session_state.manual_canvas_key = f"manual_lines_canvas_{time.time()}"
+
+                        if st.button("Limpiar canvas", key="clear_manual_canvas"):
+                            st.session_state.manual_canvas_key = f"manual_lines_canvas_{time.time()}"
+
+                else:
+                    st.warning("No se cargó el frame de referencia. Vuelve a subir el video o recarga la página.")
+
                 st.markdown("""
                 <div style="margin-top:10px;background:#111318;border:1px solid #1E2433;
                              border-radius:8px;padding:10px 14px;display:flex;gap:8px;align-items:flex-start;">
                     <span style="color:#F5A623;font-size:0.85rem;margin-top:1px;">💡</span>
                     <span style="font-family:'Sora',sans-serif;font-size:0.78rem;color:#475569;line-height:1.5;">
-                        Las coordenadas (0,0) están en la esquina <strong style="color:#94A3B8;">superior izquierda</strong>.
-                        X crece hacia la derecha, Y hacia abajo.
+                        Dibuja la línea en el canvas, luego haz clic en "Agregar líneas dibujadas".
+                        Borra con el botón del canvas o usa "Limpiar canvas" para empezar de nuevo.
                     </span>
                 </div>
                 """, unsafe_allow_html=True)
 
-            # ── Columna derecha: formulario + lista ───────────
+            # ── Columna derecha: lista de líneas ───────────
             with col2:
-                # Formulario
                 st.markdown("""
                 <div style="background:#111318;border:1px solid #1E2433;
                              border-radius:12px;padding:18px 18px 4px 18px;margin-bottom:16px;">
@@ -503,42 +624,9 @@ def main():
                                 letter-spacing:0.12em;text-transform:uppercase;color:#475569;
                                 margin-bottom:14px;display:flex;align-items:center;gap:8px;">
                         <span style="width:3px;height:12px;background:#F5A623;border-radius:2px;display:inline-block;"></span>
-                        Nueva línea
+                        Líneas definidas
                     </div>
                 """, unsafe_allow_html=True)
-
-                with st.form("add_line_form"):
-                    line_name = st.text_input(
-                        "Nombre de la línea",
-                        value=f"Línea {len(st.session_state.counting_lines)+1}",
-                        placeholder="Ej: Norte–Sur, Carril 1…"
-                    )
-                    col_a, col_b = st.columns(2)
-                    with col_a:
-                        st.caption("Punto inicio")
-                        start_x = st.number_input("X₁", min_value=0, value=100, label_visibility="collapsed")
-                        start_y = st.number_input("Y₁", min_value=0, value=300, label_visibility="collapsed")
-                        st.caption("X  ·  Y")
-                    with col_b:
-                        st.caption("Punto fin")
-                        end_x = st.number_input("X₂", min_value=0, value=500, label_visibility="collapsed")
-                        end_y = st.number_input("Y₂", min_value=0, value=300, label_visibility="collapsed")
-                        st.caption("X  ·  Y")
-
-                    line_color = st.color_picker("Color de la línea", value="#F5A623")
-
-                    if st.form_submit_button("＋  Agregar línea", type="primary"):
-                        hex_c = line_color.lstrip('#')
-                        rgb   = tuple(int(hex_c[i:i+2], 16) for i in (0, 2, 4))
-                        bgr   = (rgb[2], rgb[1], rgb[0])
-                        st.session_state.counting_lines.append({
-                            'name':  line_name,
-                            'start': (start_x, start_y),
-                            'end':   (end_x,   end_y),
-                            'color': bgr
-                        })
-                        st.success(f"✓  Línea '{line_name}' agregada.")
-                        st.rerun()
 
                 st.markdown("</div>", unsafe_allow_html=True)
 
@@ -575,7 +663,9 @@ def main():
                             """, unsafe_allow_html=True)
                         with c_del:
                             st.markdown("<div style='margin-top:4px'>", unsafe_allow_html=True)
-                            if st.button("✕", key=f"del_{idx}"):
+                            # Usar un identificador único basado en el contenido de la línea
+                            line_key = f"del_{idx}_{line['name']}_{line['start']}_{line['end']}"
+                            if st.button("✕", key=line_key):
                                 st.session_state.counting_lines.pop(idx)
                                 st.rerun()
                             st.markdown("</div>", unsafe_allow_html=True)
@@ -722,7 +812,7 @@ def main():
                     """, unsafe_allow_html=True)
 
             # Opciones
-            col1, col2, col3 = st.columns(3)
+            col1, col2 = st.columns(2)
             with col1:
                 save_video = st.checkbox(
                     "Guardar video procesado", value=False,
@@ -731,25 +821,53 @@ def main():
             with col2:
                 show_viz = st.checkbox(
                     "Visualización en tiempo real", value=True,
-                    help="Muestra frame y métricas durante el proceso"
+                    help="Muestra frame y métricas durante el proceso (solo Streamlit)"
                 )
-            with col3:
+
+            if opencv_gui_available():
                 use_opencv_window = st.checkbox(
-                    "Ventana fluida (OpenCV)", value=False,
-                    help="Abre una ventana externa con el video en tiempo real. Presiona Q para cerrar."
+                    "Mostrar ventana OpenCV local",
+                    value=False,
+                    help="Abre una ventana local de OpenCV en tu equipo. Funciona solo si tu instalación de OpenCV tiene GUI activado."
+                )
+                st.caption("Si tu Windows tiene GUI de OpenCV, se abrirá un popup de video.")
+            else:
+                use_opencv_window = False
+                st.warning(
+                    "OpenCV GUI no disponible en esta instalación. "
+                    "Para activarla instala 'opencv-python' en lugar de 'opencv-python-headless' "
+                    "y reinicia la app."
                 )
 
             st.markdown("")
 
             if st.button("Iniciar procesamiento", type="primary", use_container_width=True):
+                # Validar que hay líneas definidas
+                if not st.session_state.counting_lines:
+                    st.error("❌ Debes agregar al menos una línea antes de procesar.")
+                    st.stop()
+
                 section_title("Procesando…")
 
+                # Limpiar líneas anteriores del counter
+                st.session_state.counter.clear_lines()
+
                 # Registrar líneas en el counter
+                added_lines = 0
                 for line in st.session_state.counting_lines:
+                    # Asegurar que start y end sean tuplas
+                    start = tuple(line['start']) if not isinstance(line['start'], tuple) else line['start']
+                    end = tuple(line['end']) if not isinstance(line['end'], tuple) else line['end']
+                    color = tuple(line['color']) if not isinstance(line['color'], tuple) else line['color']
+                    
                     st.session_state.counter.add_line(
-                        start=line['start'], end=line['end'],
-                        name=line['name'],   color=line['color']
+                        start=start, end=end,
+                        name=line['name'],   color=color
                     )
+                    added_lines += 1
+
+                # Indicador visual
+                st.info(f"✓ {added_lines} línea(s) agregada(s) al contador")
 
                 t0 = time.time()
 
@@ -981,6 +1099,8 @@ def main():
 
             if st.button("Generar visualizaciones", type="primary"):
                 with st.spinner("Generando gráficos..."):
+                    if st.session_state.output_dirs is None:
+                        st.session_state.output_dirs = create_output_dirs()
                     visualizer = TrafficVisualizer(
                         output_dir=st.session_state.output_dirs['visualizations']
                     )

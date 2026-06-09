@@ -405,11 +405,11 @@ def create_detector(confidence: float = 0.5,
     Función helper para crear un detector con configuración simplificada
     """
     # Ruta del modelo peruano
-    peruvian_model = Path("models/vehiculos_lima_v1.pt")
+    peruvian_model = Path("models/vehiculos_peruanos.pt")
     
     if use_peruvian_model and peruvian_model.exists():
         model_name = str(peruvian_model)
-        logger.info("Usando modelo peruano: vehiculos_lima_v1.pt")
+        logger.info("Usando modelo peruano: vehiculos_peruanos.pt")
     else:
         model_name = f"yolov8{model_size}.pt"
         if use_peruvian_model:

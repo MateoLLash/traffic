@@ -314,6 +314,10 @@ class ObjectTracker:
         logger.info("Tracker reseteado")
 
 
+# Compatibilidad: alias moderno esperado por algunas partes de la app
+Tracker = ObjectTracker
+
+
 if __name__ == "__main__":
     print("=== Pruebas del Tracker v2 ===")
     tracker = ObjectTracker()
